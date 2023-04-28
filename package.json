@@ -1,0 +1,33 @@
+{
+  "name": "oura-movies-dvf",
+  "version": "1.0.0",
+  "description": "Oura Movies Backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omarss79/oura-backend.git"
+  },
+  "author": "Omar Soto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omarss79/oura-backend/issues"
+  },
+  "homepage": "https://github.com/omarss79/oura-backend#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^7.1.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

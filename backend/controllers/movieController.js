@@ -6,13 +6,25 @@ const getMovies = asyncHandler( async (req, res) => {
     res.status(200).json(movies)
 })
 const setMovies = asyncHandler( async (req, res) => {
-    if(!req.body.id){
+    console.log(req.user);
+    if(!req.user){
         // res.status(400).json({error: 'Favor de teclear una tarea'})
         res.status(400)
-        throw new Error('Favor de teclear una tarea')
+        throw new Error('Usuario no autorizado')
     }
-    const movie = await Movie.create(req.body)
-    res.status(201).json(movie)
+    if(req.user.role === "admin"){
+        if(!req.body.id){
+            // res.status(400).json({error: 'Favor de teclear una tarea'})
+            res.status(400)
+            throw new Error('Favor de teclear el id de la pelicula')
+        }
+        const movie = await Movie.create(req.body)
+        res.status(201).json(movie)
+    }
+    else{
+        res.status(400)
+        throw new Error('Usuario no autorizado')
+    }
 })
 const updateLikesMovies = asyncHandler( async (req, res) => {
     const movie = await Movie.find({id:req.params.id})

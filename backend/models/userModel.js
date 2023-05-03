@@ -14,6 +14,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Por favor, teclea un password']
     },
+    role: {
+        type: String,
+        required: [true, 'Por favor, teclea un rol de usuario']
+    }
 })
 
 module.exports = mongoose.model('user', userSchema)

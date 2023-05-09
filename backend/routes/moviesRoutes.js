@@ -5,7 +5,7 @@ const {protect} = require('../middleware/authMiddleware')
 
 router.get('/', getMovies)
 router.post('/', protect, setMovies)
-router.put('/:id', protect, updateLikesMovies)
+router.put('/:id', updateLikesMovies)
 router.delete('/:id', protect, deleteMovies)
 
 module.exports = router

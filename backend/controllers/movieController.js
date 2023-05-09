@@ -6,7 +6,6 @@ const getMovies = asyncHandler( async (req, res) => {
     res.status(200).json(movies)
 })
 const setMovies = asyncHandler( async (req, res) => {
-    console.log(req.user);
     if(!req.user){
         // res.status(400).json({error: 'Favor de teclear una tarea'})
         res.status(400)

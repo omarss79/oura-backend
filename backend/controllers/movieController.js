@@ -38,7 +38,7 @@ const updateLikesMovies = asyncHandler( async (req, res) => {
     }
     const vote_count = movieUpdated.vote_count + 1
     const movieModificada = await Movie.findByIdAndUpdate(movie[0]._id, {vote_count:vote_count}, {new: true})
-    res.status(200).json({ id: movieModificada.id, vote_count: movieModificada.vote_count })
+    res.status(200).json(movieModificada)
 })
 const deleteMovies = asyncHandler( async (req, res) => {
     const movie = await Movie.find({id:req.params.id})

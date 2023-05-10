@@ -5,6 +5,19 @@ const getMovies = asyncHandler( async (req, res) => {
     const movies = await Movie.find()
     res.status(200).json(movies)
 })
+const getMovie = asyncHandler( async (req, res) => {
+    const movie = await Movie.find({id:req.params.id})
+    if(movie.length == 0){
+        res.status(400)
+        throw new Error('Pelicula no encontrada')
+    }
+    const movieFound = await Movie.findById(movie[0]._id)
+    if(!movieFound){
+        res.status(400)
+        throw new Error('Pelicula no encontrada')
+    }
+    res.status(200).json(movieFound)
+})
 const setMovies = asyncHandler( async (req, res) => {
     if(!req.user){
         // res.status(400).json({error: 'Favor de teclear una tarea'})
@@ -57,6 +70,7 @@ const deleteMovies = asyncHandler( async (req, res) => {
 
 module.exports = {
     getMovies,
+    getMovie,
     setMovies,
     updateLikesMovies,
     deleteMovies
